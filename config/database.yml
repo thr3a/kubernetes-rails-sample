@@ -4,7 +4,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: password
-  host: 127.0.0.1
+  host: 192.168.16.31
 
 development:
   <<: *default
@@ -19,4 +19,4 @@ production:
   database: k8s_rails_production
   username: root
   password: password
-  host: 10.108.98.196
+  host: dev-mysql-mariadb.mysql.svc.cluster.local

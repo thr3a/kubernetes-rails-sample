@@ -1,0 +1,11 @@
+version: '3'
+ 
+services:
+  rails:
+    build:
+      context: ./
+      dockerfile: ./docker/rails/Dockerfile
+    image: thr3a/myrails
+    ports:
+      - 3000:3000
+    command: ["bundle", "exec", "puma"]
