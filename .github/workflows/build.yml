@@ -34,6 +34,8 @@ jobs:
           push: true
           tags: ${{ env.IMAGE_NAME }}
           file: docker/rails/Dockerfile
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
 
       # - name: Change Pod Name
       #   run: |
