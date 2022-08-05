@@ -37,8 +37,8 @@ jobs:
       - name: Push remote
         # uses: actions/checkout@v2
         run: |
-          git config user.name thr3a
-          git config user.email thr3a@example.com
+          git config --global user.name thr3a
+          git config --global user.email thr3a@example.com
           git clone https://${{secrets.MANIFEST_TOKEN}}@github.com/thr3a/kubernetes-rails-sample-manifests /tmp/app
           cd /tmp/app
           yq '.spec.template.spec.containers[0].image = "${{ env.IMAGE_NAME }}"' deployment.yaml -i
