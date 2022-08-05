@@ -42,7 +42,7 @@ jobs:
             "RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }}"
 
       - name: Push remote
-        uses: actions/checkout@v2
+        # uses: actions/checkout@v2
         run: |
           git config user.name thr3a
           git config user.email thr3a@example.com
