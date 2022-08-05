@@ -8,7 +8,7 @@ env:
 
 jobs:
   build:
-    name: GitOps Workflow
+    name: Build and push image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -27,13 +27,15 @@ jobs:
         with:
           images: ${{ env.IMAGE_NAME }}
 
-      - name: push Docker image
+      - name: Push Docker image
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
           tags: ${{ env.IMAGE_NAME }}
           file: docker/rails/Dockerfile
+          secrets: |
+            "RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }}"
         env:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
           SECRET_KEY_BASE: 94997d2128beb8ccbb80ae09d51bf8540bcea82b02e793327e0ef443e3a01e57b1b1184b4074c68d3f8b64292fc183f764d182b9da3689a4c1fbeddcaf47bcb2

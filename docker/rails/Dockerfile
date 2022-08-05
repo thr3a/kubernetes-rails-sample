@@ -16,7 +16,8 @@ COPY . /app
 RUN bundle config set path /vendor/bundle && \
     bundle install ${BUNDLE_OPTIONS}
 
-RUN RAILS_ENV=production bundle exec rails assets:precompile
+RUN --mount=type=secret,id=RAILS_MASTER_KEY \
+  bundle exec rails assets:precompile RAILS_MASTER_KEY=$(cat /run/secrets/RAILS_MASTER_KEY)
 
 CMD ["bundle", "exec" , "puma"]
 
