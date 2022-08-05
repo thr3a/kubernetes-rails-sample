@@ -36,6 +36,7 @@ jobs:
           file: docker/rails/Dockerfile
         env:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          SECRET_KEY_BASE: 94997d2128beb8ccbb80ae09d51bf8540bcea82b02e793327e0ef443e3a01e57b1b1184b4074c68d3f8b64292fc183f764d182b9da3689a4c1fbeddcaf47bcb2
 
       # - name: Change Pod Name
       #   run: |
